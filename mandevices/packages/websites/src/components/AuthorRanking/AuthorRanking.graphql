@@ -1,0 +1,13 @@
+query Authors {
+    posts {
+        id
+        author {
+            id
+            gender
+            fullName
+            avatar {
+                url
+            }
+        }
+    }
+}

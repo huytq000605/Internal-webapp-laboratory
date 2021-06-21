@@ -1,0 +1,20 @@
+query Masters {
+    members(where: { isMaster: true }) {
+        id
+        fullName
+        email
+        course
+        school
+        gender
+        phone
+        nominalRole
+        Socials {
+            id
+            provider
+            address
+        }
+        avatar {
+            url
+        }
+    }
+}

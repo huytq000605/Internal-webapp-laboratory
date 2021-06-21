@@ -1,0 +1,39 @@
+{
+  "project_info": {
+	"project_number": "880034726093",
+	"project_id": "mandevices-local",
+	"storage_bucket": "mandevices-local.appspot.com"
+  },
+  "client": [
+	{
+	  "client_info": {
+		"mobilesdk_app_id": "1:880034726093:android:b8f5015333382593d3e984",
+		"android_client_info": {
+		  "package_name": "com.mandevices.iot.mandevices"
+		}
+	  },
+	  "oauth_client": [
+		{
+		  "client_id": "880034726093-oooh193s0hqmivkfnf1adm1lamb01ljm.apps.googleusercontent.com",
+		  "client_type": 3
+		}
+	  ],
+	  "api_key": [
+		{
+		  "current_key": "AIzaSyA_qbDB5K3jA5-BfvB0lPXpFRFerwO7w4E"
+		}
+	  ],
+	  "services": {
+		"appinvite_service": {
+		  "other_platform_oauth_client": [
+			{
+			  "client_id": "880034726093-oooh193s0hqmivkfnf1adm1lamb01ljm.apps.googleusercontent.com",
+			  "client_type": 3
+			}
+		  ]
+		}
+	  }
+	}
+  ],
+  "configuration_version": "1"
+}

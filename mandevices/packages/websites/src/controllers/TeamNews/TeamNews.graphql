@@ -1,0 +1,14 @@
+query TeamNews($id: ID!) {
+    team(id: $id) {
+        id
+        news {
+            id
+            title
+            thumbnail {
+                url
+                caption
+            }
+            published_at
+        }
+    }
+}

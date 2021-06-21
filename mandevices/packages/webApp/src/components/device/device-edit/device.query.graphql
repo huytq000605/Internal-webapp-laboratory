@@ -1,0 +1,11 @@
+query GetDevice($input: String!) {
+	device(input: $input) {
+		name
+		category
+		image {
+			path
+			id
+		}
+		model
+	}
+}

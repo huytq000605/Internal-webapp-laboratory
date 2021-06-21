@@ -1,0 +1,14 @@
+query Publications($type: ENUM_PUBLICATIONS_TYPE) {
+    publications(where: { type: $type }) {
+        id
+        name
+        journalConference
+        edition
+        publishingTime
+        issn
+        published_at
+        isbn
+        authors
+        type
+    }
+}

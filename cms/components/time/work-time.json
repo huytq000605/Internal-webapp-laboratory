@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_time_work_times",
+  "info": {
+    "name": "WorkTime",
+    "icon": "business-time"
+  },
+  "options": {},
+  "attributes": {
+    "info": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    }
+  }
+}

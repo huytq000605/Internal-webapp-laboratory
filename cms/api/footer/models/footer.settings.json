@@ -1,0 +1,51 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "name": "Footer",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "organizationName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "website": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "workTime": {
+      "type": "component",
+      "repeatable": false,
+      "component": "time.work-time"
+    },
+    "extraInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.text"
+    }
+  }
+}

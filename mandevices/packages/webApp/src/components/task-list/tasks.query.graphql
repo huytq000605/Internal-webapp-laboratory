@@ -1,0 +1,11 @@
+query TaskList {
+	tasks {
+		...TaskListItem
+	}
+}
+
+fragment TaskListItem on Task {
+	_id
+	title
+	createdAt
+}

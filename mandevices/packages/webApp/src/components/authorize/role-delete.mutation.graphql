@@ -1,0 +1,5 @@
+mutation DeleteRole($input: String!) {
+	deleteRole(name: $input) {
+		name
+	}
+}

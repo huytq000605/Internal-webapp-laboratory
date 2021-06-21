@@ -1,0 +1,49 @@
+query WorkDayList {
+	duties {
+		...WorkDayListItem
+	}
+}
+
+query DutyDayList($date: DateTime!) {
+	dutiesByDate(date: $date) {
+		...WorkDayListItem
+	}
+}
+
+mutation RegisterDuty($input: CreateDutyInput!) {
+	registerDuty(input: $input) {
+		...WorkDayListItem
+	}
+}
+
+mutation UnsubribeDuty($date: DateTime!) {
+	unsubcribeDuty(input: { date: $date }) {
+		_id
+		subscriberId
+	}
+}
+
+subscription NewSubscriber {
+	newSubscriber {
+		...WorkDayListItem
+	}
+}
+
+subscription NewUnsubscriber {
+	newUnsubscriber {
+		_id
+		subscriberId
+	}
+}
+
+fragment WorkDayListItem on Duty {
+	_id
+	subscriberId
+	subscriberName
+	subscriberAvatar
+	date
+	times {
+		start
+		end
+	}
+}

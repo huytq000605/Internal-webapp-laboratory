@@ -1,0 +1,23 @@
+query GetUsers {
+	getUsers {
+		_id
+		name
+		createdAt
+		email
+		avatar
+		googleId
+		studentId
+		faculty
+		specialty
+		class
+		roles
+	}
+}
+
+mutation CreateUser($input: UserCreateInput!) {
+	createUser(input: $input) {
+		_id
+		createdAt
+		name
+	}
+}

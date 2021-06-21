@@ -1,0 +1,13 @@
+query GetRoles {
+	getRoles {
+		_id
+		name
+		permissions
+	}
+}
+
+mutation EditRole($input: MutationRoleInput!) {
+	editRole(input: $input) {
+		name
+	}
+}

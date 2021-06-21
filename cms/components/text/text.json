@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_short_text_texts",
+  "info": {
+    "name": "Short Text",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

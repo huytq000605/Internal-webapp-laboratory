@@ -1,0 +1,20 @@
+query ChairMan {
+    chairMan {
+        id
+        fullName
+        mainRole
+        subRoles {
+            id
+            title
+        }
+        researchTopics {
+            id
+            title
+        }
+        images {
+            id
+            url
+            caption
+        }
+    }
+}

@@ -1,0 +1,142 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "name": "Thành viên",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email"
+    },
+    "course": {
+      "type": "integer"
+    },
+    "isOldMember": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "isMember": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "isMaster": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isReasearcher": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "nominalRole": {
+      "type": "enumeration",
+      "enum": [
+        "starter",
+        "member",
+        "old_member",
+        "leader",
+        "deputy_leader",
+        "old_leader",
+        "master_student",
+        "docter_student",
+        "chairman",
+        "team_leader",
+        "deputy_team_leader"
+      ],
+      "required": false
+    },
+    "degree": {
+      "type": "enumeration",
+      "enum": [
+        "bachelor",
+        "engineer",
+        "master",
+        "docter"
+      ]
+    },
+    "current_cpa": {
+      "type": "decimal"
+    },
+    "province": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "village": {
+      "type": "string"
+    },
+    "teams": {
+      "collection": "teams",
+      "via": "members",
+      "dominant": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ]
+    },
+    "school": {
+      "type": "string"
+    },
+    "specific": {
+      "type": "string"
+    },
+    "introduce": {
+      "type": "richtext"
+    },
+    "shortIntroduce": {
+      "type": "text"
+    },
+    "skill": {
+      "type": "text"
+    },
+    "Socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social.socials"
+    },
+    "leadTeam": {
+      "model": "teams",
+      "via": "leader"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "phone": {
+      "type": "string"
+    },
+    "contact": {
+      "model": "contacts",
+      "via": "member"
+    },
+    "posts": {
+      "via": "author",
+      "collection": "posts"
+    }
+  }
+}

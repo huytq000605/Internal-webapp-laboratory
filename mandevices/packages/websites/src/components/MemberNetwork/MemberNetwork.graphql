@@ -1,0 +1,20 @@
+query MemberNetwork {
+    sections(where: { type: "member" }) {
+        id
+        title
+        subTitle
+        body {
+            id
+            heading
+            contents {
+                id
+                title
+            }
+        }
+        images {
+            id
+            url
+            caption
+        }
+    }
+}

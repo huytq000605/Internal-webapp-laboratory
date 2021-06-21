@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "name": "Activity",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "eventName": {
+      "type": "string"
+    },
+    "atTime": {
+      "type": "date"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "videos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.video"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "media.image"
+    }
+  }
+}

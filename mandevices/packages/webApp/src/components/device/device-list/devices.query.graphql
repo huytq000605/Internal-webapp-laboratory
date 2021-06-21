@@ -1,0 +1,19 @@
+query GetDevices($options: DeviceOptions) {
+	devices(options: $options) {
+		_id
+		name
+		category
+		image {
+			id
+			path
+		}
+		model
+		createdAt
+		createdBy {
+			id
+			avatar
+			email
+			name
+		}
+	}
+}

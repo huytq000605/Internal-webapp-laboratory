@@ -1,0 +1,8 @@
+query StudentCategory {
+    members {
+        isMember
+        isOldMember
+        course
+        school
+    }
+}

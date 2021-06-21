@@ -1,0 +1,7 @@
+query ResearchTopicDetail($id: ID!) {
+    researchTopic(id: $id) {
+        id
+        name
+        descriptions
+    }
+}

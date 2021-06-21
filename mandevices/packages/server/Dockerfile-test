@@ -1,0 +1,14 @@
+FROM node:14.15.1
+
+WORKDIR /app
+
+COPY ./package.json ./package.json
+
+RUN yarn
+
+COPY . .
+
+COPY ./wait /wait
+RUN chmod +x /wait
+
+CMD /wait && yarn test

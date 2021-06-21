@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "name": "Liên hệ",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "member": {
+      "via": "contact",
+      "model": "members"
+    },
+    "targets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.long-text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,35 @@
+mutation CreateDevice(
+	$image: Upload
+	$name: String!
+	$category: String!
+	$model: String
+) {
+	createDevice(
+		file: $image
+		input: { name: $name, category: $category, model: $model }
+	) {
+		_id
+		name
+		image {
+			path
+			id
+		}
+		model
+		category
+		createdAt
+	}
+}
+
+mutation CreateDevices($devices: [DeviceCreateInput!]!) {
+	createDevices(input: $devices) {
+		_id
+		name
+		image {
+			path
+			id
+		}
+		model
+		category
+		createdAt
+	}
+}

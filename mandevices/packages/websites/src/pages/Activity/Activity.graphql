@@ -1,0 +1,25 @@
+query Activities {
+    activities {
+        id
+        eventName
+        description
+        atTime
+        createdAt
+        videos {
+            id
+            youTubeVideoId
+            description
+        }
+        images {
+            id
+            images {
+                id
+                url
+                formats
+                alternativeText
+                caption
+            }
+            description
+        }
+    }
+}

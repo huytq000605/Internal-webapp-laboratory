@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents",
+  "info": {
+    "name": "Tài liệu",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true,
+      "minLength": 1
+    },
+    "file": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "category": {
+      "model": "document-categories",
+      "via": "documents"
+    }
+  }
+}

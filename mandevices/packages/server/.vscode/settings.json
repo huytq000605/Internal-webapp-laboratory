@@ -1,0 +1,26 @@
+{
+    "todohighlight.include": [
+        "**/*.conf",
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "editor.formatOnSave": true,
+    "todohighlight.keywords": [
+        {
+            "text": "RESEARCH:",
+            "color": "#ff0000",
+            "backgroundColor": "yellow",
+            "overviewRulerColor": "grey"
+        }
+    ],
+    "terminal.integrated.scrollback": 100000000,
+    "workbench.tree.indent": 40,
+    "prettier.endOfLine": "lf",
+    "files.eol": "\n"
+}

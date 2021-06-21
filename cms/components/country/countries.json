@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_country_countries",
+  "info": {
+    "name": "countries",
+    "icon": "x-ray"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "flag": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "universities": {
+      "type": "component",
+      "repeatable": true,
+      "component": "university.universities"
+    }
+  }
+}

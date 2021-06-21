@@ -1,0 +1,18 @@
+.timeline {
+	position: relative;
+	&__start {
+		color: dodgerblue;
+		font-weight: bold;
+	}
+	&__end {
+		color: darkred;
+		font-weight: bold;
+		position: relative;
+		top: -35px;
+	}
+	&__icon {
+		position: absolute;
+		top: -56px;
+		display: flex;
+	}
+}

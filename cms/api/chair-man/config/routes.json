@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/chair-man",
+      "handler": "chair-man.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/chair-man",
+      "handler": "chair-man.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/chair-man",
+      "handler": "chair-man.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

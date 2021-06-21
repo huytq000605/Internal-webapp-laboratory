@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_media_videos",
+  "info": {
+    "name": "video",
+    "icon": "apple-alt"
+  },
+  "options": {},
+  "attributes": {
+    "youTubeVideoId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

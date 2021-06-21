@@ -1,0 +1,31 @@
+hr {
+	border: 1px solid black;
+}
+.post {
+	flex-wrap: nowrap;
+	padding: 1rem;
+	&:hover {
+		background-color: lightblue;
+		padding: 1rem;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	&__thumnail {
+		width: 180px;
+		height: 120px;
+		object-fit: cover;
+		margin-right: 0.5rem;
+		border-radius: 10px;
+	}
+
+	&__info {
+		margin: 0;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__published_at {
+		font-style: italic;
+		font-size: 0.9rem;
+	}
+}

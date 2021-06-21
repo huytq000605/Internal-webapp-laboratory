@@ -1,0 +1,21 @@
+mutation EditDevice(
+	$image: Upload
+	$name: String
+	$category: String
+	$model: String
+	$id: ID!
+) {
+	editDevice(
+		file: $image
+		input: { name: $name, category: $category, _id: $id, model: $model }
+	) {
+		name
+		image {
+			path
+			id
+		}
+		model
+		category
+		createdAt
+	}
+}

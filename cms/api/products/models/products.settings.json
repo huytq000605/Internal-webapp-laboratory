@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Sản phẩm",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "functions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.long-text"
+    },
+    "extraInfo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.long-text"
+    },
+    "performers": {
+      "collection": "members"
+    },
+    "instructors": {
+      "collection": "members"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": ["images", "files", "videos"],
+      "plugin": "upload",
+      "required": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["DATN", "NCKH", "DA"]
+    },
+    "semester": {
+      "type": "integer"
+    },
+    "descriptions": {
+      "type": "richtext"
+    },
+    "project": {
+      "via": "products",
+      "model": "project"
+    }
+  }
+}

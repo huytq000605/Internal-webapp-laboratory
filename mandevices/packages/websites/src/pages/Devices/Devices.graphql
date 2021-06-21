@@ -1,0 +1,23 @@
+query DevicesMenu {
+    deviceCategories {
+        name
+        id
+    }
+}
+query Devices {
+    deviceCategories {
+        devices {
+            id
+            category {
+                name
+            }
+            model
+            name
+            avatar {
+                id
+                url
+                caption
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.register__info {
+	width: 200px;
+}
+
+.register__avatar {
+	max-width: 36px;
+}
+
+.register__name {
+	&-active {
+		font-weight: bold;
+	}
+}
+
+@media screen and (max-width: 575.98px) {
+	.register__info {
+		width: unset;
+	}
+	.register__name {
+		display: none;
+		&-active {
+			font-weight: bold;
+		}
+	}
+
+	.register__avatar {
+		&-active {
+			border: solid 2px blue;
+			padding: 2px;
+		}
+	}
+}

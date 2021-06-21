@@ -1,0 +1,8 @@
+query homeSlide {
+    homeSlide {
+        slides {
+            id
+            url
+        }
+    }
+}

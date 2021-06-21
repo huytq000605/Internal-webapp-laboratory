@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/meetings",
+      "handler": "meetings.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/meetings/count",
+      "handler": "meetings.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/meetings/:id",
+      "handler": "meetings.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/meetings",
+      "handler": "meetings.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/meetings/:id",
+      "handler": "meetings.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/meetings/:id",
+      "handler": "meetings.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

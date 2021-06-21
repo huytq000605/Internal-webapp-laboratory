@@ -1,0 +1,45 @@
+query TeamIntroduce($id: ID!) {
+    team(id: $id) {
+        id
+        name
+        descriptions
+        avatar {
+            url
+            caption
+        }
+        members {
+            id
+            avatar {
+                url
+            }
+            gender
+            nominalRole
+            fullName
+            course
+            email
+            phone
+            Socials {
+                id
+                provider
+                address
+            }
+        }
+        leader {
+            id
+            avatar {
+                url
+            }
+            gender
+            course
+            nominalRole
+            fullName
+            email
+            phone
+            Socials {
+                id
+                provider
+                address
+            }
+        }
+    }
+}

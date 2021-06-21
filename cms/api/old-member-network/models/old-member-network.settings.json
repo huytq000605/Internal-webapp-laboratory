@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "old_member_networks",
+  "info": {
+    "name": "OldMemberNetwork",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "companies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "brands.companies"
+    },
+    "countries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "country.countries"
+    }
+  }
+}

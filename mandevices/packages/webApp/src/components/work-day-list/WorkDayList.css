@@ -1,0 +1,5 @@
+.card__header--active {
+	background-color: deepskyblue;
+	color: white;
+	font-weight: bold;
+}

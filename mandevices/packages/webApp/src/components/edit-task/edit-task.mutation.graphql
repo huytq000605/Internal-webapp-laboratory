@@ -1,0 +1,6 @@
+mutation EditTask($title: String!, $_id: ID!) {
+	editTask(input: { title: $title, _id: $_id }) {
+		_id
+		title
+	}
+}

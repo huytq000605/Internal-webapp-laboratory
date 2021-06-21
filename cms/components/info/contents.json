@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_info_contents",
+  "info": {
+    "name": "contents",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "contents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.long-text"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_categories",
+  "info": {
+    "name": "Danh mục tài liệu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "documents": {
+      "via": "category",
+      "collection": "documents"
+    }
+  }
+}

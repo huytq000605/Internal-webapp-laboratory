@@ -1,0 +1,7 @@
+build/
+tsconfig.tsbuildinfo
+.env
+logs/
+coverage/
+globalConfig.json
+upload/

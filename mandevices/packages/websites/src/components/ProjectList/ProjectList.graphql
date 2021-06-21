@@ -1,0 +1,10 @@
+query Project($level: ENUM_PROJECT_LEVEL) {
+    projects(where: { level: $level }) {
+        id
+        name
+        startYear
+        endYear
+        level
+        source
+    }
+}

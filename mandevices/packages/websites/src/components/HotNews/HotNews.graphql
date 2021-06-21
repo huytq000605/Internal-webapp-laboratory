@@ -1,0 +1,13 @@
+query HotNewsCast {
+    newscasts(where: { hot: true }) {
+        id
+        createdAt
+        updatedAt
+        title
+        thumbnail {
+            url
+        }
+        hot
+        published_at
+    }
+}

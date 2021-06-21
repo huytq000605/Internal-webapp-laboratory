@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/introduce",
+      "handler": "introduce.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/introduce",
+      "handler": "introduce.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/introduce",
+      "handler": "introduce.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

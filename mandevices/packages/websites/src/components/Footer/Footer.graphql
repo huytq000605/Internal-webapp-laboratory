@@ -1,0 +1,23 @@
+query Footer {
+    footer {
+        id
+        email
+        phone
+        address
+        workTime {
+            id
+            info
+            note
+        }
+        logo {
+            id
+            alternativeText
+            caption
+            url
+        }
+        extraInfo {
+            id
+            title
+        }
+    }
+}

@@ -1,0 +1,37 @@
+[
+	{
+		"api": "createDevices",
+		"group": "devices",
+		"permissions": ["createDevices"]
+	},
+	{
+		"api": "devices",
+		"group": "devices",
+		"permissions": ["devices"]
+	},	
+	{
+		"api": "device",
+		"group": "devices",
+		"permissions": ["device"]
+	},	
+	{
+		"api": "editDevices",
+		"group": "devices",
+		"permissions": ["editDevices"]
+	},	
+	{
+		"api": "deleteDevice",
+		"group": "devices",
+		"permissions": ["deleteDevice"]
+	},	
+	{
+		"api": "getUser",
+		"group": "users",
+		"permissions": ["getUser"]
+	},	
+	{
+		"api": "getAdmin",
+		"group": "users",
+		"permissions": ["getAdmin"]
+	}
+]

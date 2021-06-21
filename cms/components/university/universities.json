@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_university_universities",
+  "info": {
+    "name": "universities",
+    "icon": "address-book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "shortName": {
+      "type": "string"
+    },
+    "students": {
+      "collection": "members"
+    }
+  }
+}

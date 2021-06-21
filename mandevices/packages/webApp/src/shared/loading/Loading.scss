@@ -1,0 +1,16 @@
+.loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 70px;
+	height: 70px;
+	&__spinner {
+		position: absolute;
+		width: 68px;
+		height: 68px;
+	}
+	&__icon {
+		width: 56px;
+	}
+}

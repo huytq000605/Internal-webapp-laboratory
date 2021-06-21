@@ -1,0 +1,22 @@
+query Documents($categoryName: String!){
+  documents(where:{category:{name: $categoryName}}){
+	createdAt
+    id 
+    name 
+    file{
+      id
+      name
+      ext
+      url
+    }
+    category{
+      name
+    }
+    
+  }
+}
+query DocumentCategories {
+  documentCategories{
+    name
+  }
+}

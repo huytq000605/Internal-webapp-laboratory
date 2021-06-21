@@ -1,0 +1,40 @@
+query PostCategories {
+    postCategories {
+        id
+        name
+        parentCategory {
+            id
+            name
+            subCategories {
+                id
+                name
+            }
+        }
+        posts {
+            id
+        }
+    }
+}
+
+query PostsLists {
+    posts {
+        ...PostItem
+    }
+}
+
+fragment PostItem on Posts {
+    id
+    title
+    shortDescription
+    categories {
+        id
+        name
+    }
+    thumbnail {
+        id
+        url
+        formats
+    }
+    content
+    published_at
+}

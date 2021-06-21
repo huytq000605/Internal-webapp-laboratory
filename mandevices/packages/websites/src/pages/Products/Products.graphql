@@ -1,0 +1,39 @@
+query ProductSideMenu {
+    products {
+        id
+        type
+        semester
+    }
+}
+
+query Products($type: ENUM_PRODUCTS_TYPE!) {
+    products(where: { type: $type }) {
+        id
+        type
+        name
+        semester
+        images {
+            id
+            caption
+            url
+        }
+        performers {
+            id
+            fullName
+            course
+            nominalRole
+        }
+        functions {
+            id
+            title
+        }
+        extraInfo {
+            id
+            title
+        }
+        instructors {
+            id
+            fullName
+        }
+    }
+}

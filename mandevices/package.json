@@ -1,0 +1,26 @@
+{
+	"private": "true",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"dev": "lerna run dev --parallel",
+		"precommit": "sync-dotenv && lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents",
+		"test": "docker-compose up --build --abort-on-container-exit server && docker-compose up --build --abort-on-container-exit web_app && docker-compose up --build --abort-on-container-exit websites",
+		"production:run": "docker-compose -f production.yml up --build --remove-orphans",
+		"production:down": "docker-compose -f production.yml down --remove-orphans"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@commitlint/config-lerna-scopes": "^11.0.0",
+		"husky": "^4.3.6",
+		"lerna": "^3.22.1",
+		"prettier": "^2.2.1",
+		"sync-dotenv": "^2.6.2"
+	},
+	"name": "create-react-app",
+	"resolutions": {
+		"graphql": "15.5.0"
+	}
+}

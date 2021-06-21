@@ -1,0 +1,7 @@
+query GetPermissonsConfig {
+	getPermissionsConfig {
+		api
+		group
+		permissions
+	}
+}

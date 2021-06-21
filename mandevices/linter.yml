@@ -1,0 +1,26 @@
+version: "3"
+services:
+  server:
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile-test
+    environment:
+      - NODE_ENV=lint
+    command: ["yarn", "lint"]
+  web_app:
+    build:
+      context: ./packages/webApp
+      dockerfile: Dockerfile-test
+    environment:
+      CI: "true"
+      NODE_ENV: lint
+      REACT_APP_GOOGLE_CLIENT_ID: $REACT_APP_GOOGLE_CLIENT_ID
+    command: ["yarn", "lint"]
+  websites:
+    build:
+      context: ./packages/websites
+      dockerfile: Dockerfile-test
+    environment:
+      CI: "true"
+      NODE_ENV: lint
+    command: ["yarn", "lint"]

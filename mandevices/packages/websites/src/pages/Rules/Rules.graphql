@@ -1,0 +1,6 @@
+query Rule {
+    rule {
+        id
+        content
+    }
+}

@@ -1,0 +1,5 @@
+mutation SetUserRole($input: SetUserRoleInput!) {
+	setUserRole(input: $input) {
+		name
+	}
+}

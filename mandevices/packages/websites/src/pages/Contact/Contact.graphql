@@ -1,0 +1,15 @@
+query Contacts {
+    contacts {
+        id
+        targets {
+            id
+            title
+        }
+        member {
+            nominalRole
+            fullName
+            email
+            phone
+        }
+    }
+}

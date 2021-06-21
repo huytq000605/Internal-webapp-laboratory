@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "name": "Nhóm chuyên môn",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "descriptions": {
+      "type": "richtext"
+    },
+    "members": {
+      "via": "teams",
+      "collection": "members"
+    },
+    "leader": {
+      "via": "leadTeam",
+      "model": "members"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "news": {
+      "collection": "newscast",
+      "via": "teams",
+      "dominant": true
+    },
+    "profiles": {
+      "type": "richtext"
+    },
+    "posts": {
+      "via": "teams",
+      "collection": "posts",
+      "dominant": true
+    }
+  }
+}

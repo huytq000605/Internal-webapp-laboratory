@@ -1,0 +1,14 @@
+query TeamPosts($id: ID!) {
+    team(id: $id) {
+        id
+        posts {
+            id
+            title
+            thumbnail {
+                url
+                caption
+            }
+            published_at
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "chair_men",
+  "info": {
+    "name": "Chủ nhiệm Lab",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "mainRole": {
+      "type": "string"
+    },
+    "subRoles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.text"
+    },
+    "researchTopics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.long-text"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": ["images", "files", "videos"],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

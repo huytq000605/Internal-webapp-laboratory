@@ -1,0 +1,22 @@
+query Students {
+    members(where: { isMember: true, isOldMember: false }) {
+        id
+        fullName
+        email
+        course
+        school
+        gender
+        phone
+        isMember
+        nominalRole
+		        Socials {
+            id
+            provider
+            address
+        }
+        avatar {
+            url
+			formats
+        }
+    }
+}

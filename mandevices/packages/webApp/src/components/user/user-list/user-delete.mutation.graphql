@@ -1,0 +1,7 @@
+mutation DeleteUser($input: String!) {
+	deleteUser(input: $input) {
+		_id
+		name
+		email
+	}
+}

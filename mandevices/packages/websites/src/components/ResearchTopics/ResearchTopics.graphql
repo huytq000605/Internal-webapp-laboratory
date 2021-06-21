@@ -1,0 +1,9 @@
+query ResearchTopics {
+    researchTopics {
+        id
+        name
+        image {
+            url
+        }
+    }
+}

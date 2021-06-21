@@ -1,0 +1,24 @@
+query PostListByCategory($categoryId: ID!) {
+    posts(where: { categories: { id: $categoryId } }) {
+        id
+        title
+        shortDescription
+        createdBy {
+            id
+            firstname
+            lastname
+            email
+        }
+        categories {
+            id
+            name
+        }
+        thumbnail {
+            id
+            formats
+        }
+        createdAt
+        updatedAt
+        published_at
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_brands_companies",
+  "info": {
+    "name": "companies",
+    "icon": "stroopwafel"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

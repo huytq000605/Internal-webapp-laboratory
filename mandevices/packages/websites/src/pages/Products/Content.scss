@@ -1,0 +1,45 @@
+.ContentTitle {
+	font-size: 24px;
+	font-weight: 700;
+	color: #000000;
+	margin: 17px 0px 30px 40px;
+}
+.ContentInfo {
+	width: 93.1818%;
+	// width: 984px;
+	margin-left: 55px;
+}
+.ContentInfoText {
+	width: 566px;
+	.ContentInfoTextHead {
+		display: flex;
+		height: 53px;
+		align-items: center;
+		justify-content: space-between;
+
+		.Index {
+			position: relative;
+			height: 37px;
+			padding: 0px 28px;
+			border-radius: 2px;
+			background-color: #0080FF;
+			color: #ffffff;
+			font-size: 24px;
+			&::after {
+				content: '';
+				position: absolute;
+				width: 1px;
+				height: 48px;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: #bbb9b9;
+				right: -25px;
+			}
+		}
+		.Title {
+			font-size: 16px;
+			font-weight: 600;
+		}
+	}
+
+}

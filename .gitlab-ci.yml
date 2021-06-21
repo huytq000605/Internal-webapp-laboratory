@@ -1,0 +1,233 @@
+image: docker:20.10.1
+
+services:
+  - docker:20.10.1-dind
+
+variables:
+  SERVER_IMAGE: $CI_REGISTRY_IMAGE/mandevices-server
+  WEB_APP_IMAGE: $CI_REGISTRY_IMAGE/mandevices-web-app
+  WEBSITES_IMAGE: $CI_REGISTRY_IMAGE/mandevices-websites
+  CMS_IMAGE: $CI_REGISTRY_IMAGE/mandevices-cms
+  DB_NAME: mandevices
+
+before_script:
+  - sudo -n  apt -y update
+  - sudo -n  apt -y upgrade
+  - sudo -n  apt -y install docker-compose
+  - sudo docker version
+  - docker-compose version
+  - sudo docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - git remote prune origin
+
+stages:
+  - lint
+  - test
+  - draft_build
+  - build
+  - deploy
+
+# LINT STAGE
+server_lint:
+  stage: lint
+  script:
+    - cd mandevices
+    - docker-compose -f linter.yml up  --remove-orphans server
+webapp_lint:
+  stage: lint
+  script:
+    - cd mandevices
+    - docker-compose -f linter.yml up  --remove-orphans web_app
+websites_lint:
+  stage: lint
+  script:
+    - cd mandevices
+    - docker-compose -f linter.yml up  --remove-orphans websites
+
+# TEST STAGE
+server_test:
+  stage: test
+  script:
+    - cd mandevices
+    - docker-compose up  --remove-orphans server
+webapp-test:
+  stage: test
+  script:
+    - cd mandevices
+    - docker-compose up --remove-orphans web_app
+websites-test:
+  stage: test
+  script:
+    - cd mandevices
+    - docker-compose up --remove-orphans websites
+
+# DRAFT BUILD STAGE
+mandevices-draft-build:
+  # TODO: Dùng lệnh sed để xóa 2 dòng này trong file production.yml vì không cần trong quá trình build
+  variables:
+    WEBSITES_PORT: $WEBSITES_PORT_DEV
+    WEB_APP_PORT: $WEB_APP_PORT_DEV
+    SERVER_PORT: $SERVER_PORT_PROD
+    CMS_PORT: $CMS_PORT_PROD
+    CMS_URL: https://admin.mandevices.com
+  stage: draft_build
+  script:
+    - cd mandevices
+    - docker-compose -f production.yml config
+    - docker-compose -f production.yml build
+
+# BUILD STAGE
+
+## BUILD: MANDEVICES
+
+mandevices-build:
+  # TODO: Dùng lệnh sed để xóa 2 dòng này trong file production.yml vì không cần trong quá trình build
+  variables:
+    WEBSITES_PORT: $WEBSITES_PORT_DEV
+    WEB_APP_PORT: $WEB_APP_PORT_DEV
+    SERVER_PORT: $SERVER_PORT_PROD
+    CMS_PORT: $CMS_PORT_PROD
+    CMS_URL: https://admin.mandevices.com
+  stage: build
+  only:
+    - master
+  script:
+    - cd mandevices
+    - docker-compose -f production.yml config
+    - docker-compose -f production.yml build
+    - sudo docker image tag $SERVER_IMAGE $SERVER_IMAGE:$CI_COMMIT_SHA
+    - sudo docker image tag $WEB_APP_IMAGE $WEB_APP_IMAGE:$CI_COMMIT_SHA
+    - sudo docker image tag $WEBSITES_IMAGE $WEBSITES_IMAGE:$CI_COMMIT_SHA
+    - sudo docker image tag $CMS_IMAGE $CMS_IMAGE:$CI_COMMIT_SHA
+    - sudo docker push $SERVER_IMAGE:$CI_COMMIT_SHA
+    - sudo docker push $SERVER_IMAGE:latest
+    - sudo docker push $WEB_APP_IMAGE:$CI_COMMIT_SHA
+    - sudo docker push $WEB_APP_IMAGE:latest
+    - sudo docker push $WEBSITES_IMAGE:$CI_COMMIT_SHA
+    - sudo docker push $WEBSITES_IMAGE:latest
+    - sudo docker push $CMS_IMAGE:$CI_COMMIT_SHA
+    - sudo docker push $CMS_IMAGE:latest
+mandevices-build-dev:
+  # TODO: Dùng lệnh sed để xóa 2 dòng này trong file production.yml vì không cần trong quá trình build
+  variables:
+    WEBSITES_PORT: $WEBSITES_PORT_DEV
+    WEB_APP_PORT: $WEB_APP_PORT_DEV
+    SERVER_PORT: $SERVER_PORT_DEV
+    CMS_PORT: $CMS_PORT_DEV
+    CMS_URL: https://dev.admin.mandevices.com
+  stage: build
+  only:
+    - dev
+  script:
+    - cd mandevices
+    - docker-compose -f production.yml config
+    - docker-compose -f production.yml build
+    - sudo docker image tag $SERVER_IMAGE $SERVER_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker image tag $SERVER_IMAGE $SERVER_IMAGE-dev
+    - sudo docker image tag $WEB_APP_IMAGE $WEB_APP_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker image tag $WEB_APP_IMAGE $WEB_APP_IMAGE-dev
+    - sudo docker image tag $WEBSITES_IMAGE $WEBSITES_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker image tag $WEBSITES_IMAGE $WEBSITES_IMAGE-dev
+    - sudo docker image tag $CMS_IMAGE $CMS_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker image tag $CMS_IMAGE $CMS_IMAGE-dev
+    - sudo docker push $SERVER_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker push $SERVER_IMAGE-dev:latest
+    - sudo docker push $WEB_APP_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker push $WEB_APP_IMAGE-dev:latest
+    - sudo docker push $WEBSITES_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker push $WEBSITES_IMAGE-dev:latest
+    - sudo docker push $CMS_IMAGE-dev:$CI_COMMIT_SHA
+    - sudo docker push $CMS_IMAGE-dev:latest
+
+# DEPLOY STAGE
+
+## DEPLOY: MANDEVICES
+
+mandevices-deploy:
+  variables:
+    WEBSITES_PORT: $WEBSITES_PORT_PROD
+    WEB_APP_PORT: $WEB_APP_PORT_PROD
+    SERVER_PORT: $SERVER_PORT_PROD
+  stage: deploy
+  only:
+    - master
+  before_script:
+    - sudo -n  apt -y update && sudo -n  apt -y install openssh-client bash
+    - sudo -n  apt -y install docker-compose
+  script:
+    # chạy ssh-agent tương ứng với Gitlab Runner hiện tại
+    - eval $(ssh-agent -s)
+    # thêm nội dung của biến SSH_PRIVATE_KEY vào agent store
+    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
+
+    # tạo folder ~/.ssh
+    - mkdir -p ~/.ssh
+
+    # Scan lấy SSH Host key cho địa chỉ IP server
+    # Được kết quả bao nhiêu thì thêm vào file known_hosts
+    - ssh-keyscan -H $VPS >> ~/.ssh/known_hosts
+
+    # Sửa lại quyền của file known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - cd mandevices
+    - >
+      ssh $SSH_USER@$VPS
+      mkdir -p ${PATH_TO_PROJECT};
+    - docker-compose -f production.yml config > mandevices-deploy.yml;
+    - sed '/build:/d;/context:/d;/dockerfile:/d;/args:/d;/REACT_APP_GOOGLE_CLIENT_ID:/d;' -i ./mandevices-deploy.yml;
+    - scp ./mandevices-deploy.yml $SSH_USER@$VPS:/${PATH_TO_PROJECT};
+    - >
+      ssh $SSH_USER@$VPS
+      "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY};
+      cd ${PATH_TO_PROJECT};
+      docker-compose -f mandevices-deploy.yml down;
+      docker-compose -f mandevices-deploy.yml pull;
+      docker-compose -f mandevices-deploy.yml up -d api web_app websites;
+      docker image prune -f;"
+
+mandevices-deploy-dev:
+  variables:
+    SERVER_IMAGE: $CI_REGISTRY_IMAGE/mandevices-server-dev
+    WEB_APP_IMAGE: $CI_REGISTRY_IMAGE/mandevices-web-app-dev
+    WEBSITES_IMAGE: $CI_REGISTRY_IMAGE/mandevices-websites-dev
+    CMS_IMAGE: $CI_REGISTRY_IMAGE/mandevices-cms-dev
+    DB_NAME: mandevices-dev
+    WEBSITES_PORT: $WEBSITES_PORT_DEV
+    WEB_APP_PORT: $WEB_APP_PORT_DEV
+    SERVER_PORT: $SERVER_PORT_DEV
+  stage: deploy
+  only:
+    - dev
+  before_script:
+    - sudo -n  apt -y update && sudo -n  apt -y install openssh-client bash
+    - sudo -n  apt -y install docker-compose
+  script:
+    # chạy ssh-agent tương ứng với Gitlab Runner hiện tại
+    - eval $(ssh-agent -s)
+    # thêm nội dung của biến SSH_PRIVATE_KEY vào agent store
+    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
+
+    # tạo folder ~/.ssh
+    - mkdir -p ~/.ssh
+
+    # Scan lấy SSH Host key cho địa chỉ IP server
+    # Được kết quả bao nhiêu thì thêm vào file known_hosts
+    - ssh-keyscan -H $VPS >> ~/.ssh/known_hosts
+
+    # Sửa lại quyền của file known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - cd mandevices
+    - >
+      ssh $SSH_USER@$VPS
+      mkdir -p ${PATH_TO_PROJECT}/mandevices-dev;
+    - docker-compose -f production.yml config
+    - docker-compose -f production.yml config > mandevices-deploy-dev.yml;
+    - sed '/build:/d;/context:/d;/dockerfile:/d;/args:/d;/REACT_APP_GOOGLE_CLIENT_ID:/d;' -i ./mandevices-deploy-dev.yml;
+    - scp ./mandevices-deploy-dev.yml $SSH_USER@$VPS:/${PATH_TO_PROJECT}/mandevices-dev;
+    - >
+      ssh $SSH_USER@$VPS
+      "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY};
+      cd ${PATH_TO_PROJECT}/mandevices-dev;
+      docker-compose -f mandevices-deploy-dev.yml down;
+      docker-compose -f mandevices-deploy-dev.yml pull;
+      docker-compose -f mandevices-deploy-dev.yml up -d;
+      docker image prune -f;"

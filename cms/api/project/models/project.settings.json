@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "name": "Project",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true,
+      "minLength": 10
+    },
+    "startYear": {
+      "type": "integer",
+      "required": true,
+      "min": 1986
+    },
+    "endYear": {
+      "type": "integer"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "national",
+        "ministry",
+        "school"
+      ],
+      "required": true
+    },
+    "products": {
+      "collection": "products",
+      "via": "project"
+    },
+    "source": {
+      "type": "string"
+    }
+  }
+}

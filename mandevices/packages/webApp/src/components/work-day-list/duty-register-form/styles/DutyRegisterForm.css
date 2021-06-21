@@ -1,0 +1,11 @@
+.time__tag {
+	color: gray;
+}
+
+.time__tag-active {
+	color: green !important;
+}
+
+.time__tag-error {
+	color: red !important;
+}

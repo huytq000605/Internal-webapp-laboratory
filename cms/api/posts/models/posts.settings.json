@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Bài viết",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "categories": {
+      "collection": "post-categories",
+      "via": "posts",
+      "dominant": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "text.text"
+    },
+    "author": {
+      "model": "members",
+      "via": "posts"
+    },
+    "teams": {
+      "collection": "teams",
+      "via": "posts"
+    }
+  }
+}

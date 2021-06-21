@@ -1,0 +1,20 @@
+query Leader {
+    leader {
+        id
+        fullName
+        mainInfo
+        mainRole
+        email
+        phone
+        images {
+            id
+            url
+            caption
+        }
+        socials {
+            id
+            provider
+            address
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{
+	"folders": [
+		{
+			"name": "ROOT",
+			"path": "."
+		},
+		{
+			"name": "YARN_WORKSPACE",
+			"path": "./mandevices"
+		},
+		{
+			"name": "CMS",
+			"path": "./cms"
+		},
+		{
+			"name": "SERVER",
+			"path": "./mandevices/packages/server"
+		},
+		{
+			"name": "WEB_APP",
+			"path": "./mandevices/packages/webApp"
+		},
+		{
+			"name": "WEBSITES",
+			"path": "./mandevices/packages/websites"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode",
+			"graphql.vscode-graphql",
+			"pkief.material-icon-theme",
+			"mikestead.dotenv",
+			"editorconfig.editorconfig",
+			"dbaeumer.vscode-eslint",
+			"coenraads.bracket-pair-colorizer",
+			"formulahendry.auto-rename-tag",
+			"davidanson.vscode-markdownlint",
+			"shd101wyy.markdown-preview-enhanced",
+			"wayou.vscode-todo-highlight"
+		]
+	},
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "ROOT",
+		"todohighlight.include": [
+			"**/*.conf",
+			"**/*.js",
+			"**/*.jsx",
+			"**/*.ts",
+			"**/*.tsx",
+			"**/*.html",
+			"**/*.php",
+			"**/*.css",
+			"**/*.scss"
+		],
+		"editor.formatOnSave": true,
+		"todohighlight.keywords": [
+			{
+				"text": "RESEARCH:",
+				"color": "#ff0000",
+				"backgroundColor": "yellow",
+				"overviewRulerColor": "grey"
+			}
+		],
+		"terminal.integrated.scrollback": 100000000,
+		"workbench.tree.indent": 40,
+		"prettier.endOfLine": "lf",
+		"files.eol": "\n",
+		"cSpell.words": [
+			"Mandevices"
+		]
+	}
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/old-member-network",
+      "handler": "old-member-network.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/old-member-network",
+      "handler": "old-member-network.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/old-member-network",
+      "handler": "old-member-network.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

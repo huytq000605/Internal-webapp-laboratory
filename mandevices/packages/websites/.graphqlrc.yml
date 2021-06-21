@@ -1,0 +1,2 @@
+schema: "../../../cms/exports/graphql/schema.graphql"
+documents: "./rc/**/*.{graphql,js,ts,jsx,tsx}"

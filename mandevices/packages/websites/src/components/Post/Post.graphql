@@ -1,0 +1,12 @@
+query Posts {
+    posts {
+        id
+        title
+        thumbnail {
+            id
+            url
+            alternativeText
+        }
+        published_at
+    }
+}

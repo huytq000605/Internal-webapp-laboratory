@@ -1,0 +1,58 @@
+.social {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 300px;
+	border-radius: 0.5rem;
+	box-shadow: 0 1px 5px blue;
+	i {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid white;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.3rem;
+		background-color: white;
+		color: red;
+	}
+	span {
+		margin: 0 auto;
+		font-weight: bold;
+	}
+}
+
+.signup {
+	width: 100%;
+	max-width: 460px;
+	background-color: #fff;
+	margin: auto;
+	padding: 30px;
+	border-radius: 20px;
+	box-shadow: 0 0 30px gray;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	& > * {
+		width: 100%;
+	}
+	&__logo {
+		max-width: 200px;
+		display: inline-block;
+		margin-bottom: 30px;
+	}
+}
+
+form {
+	button {
+		width: 100%;
+		font-weight: bold;
+	}
+}
+
+.signup-page {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}

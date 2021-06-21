@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publications",
+  "info": {
+    "name": "Bài báo, tạp chí khoa học",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "authors": {
+      "type": "richtext",
+      "required": true
+    },
+    "name": {
+      "type": "text"
+    },
+    "journalConference": {
+      "type": "text"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "publishingTime": {
+      "type": "date"
+    },
+    "issn": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "domestic",
+        "international"
+      ]
+    }
+  }
+}

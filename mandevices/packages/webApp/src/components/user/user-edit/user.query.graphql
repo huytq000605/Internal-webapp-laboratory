@@ -1,0 +1,15 @@
+query GetUser($input: String!) {
+	getUser(input: $input) {
+		_id
+		name
+		createdAt
+		email
+		avatar
+		googleId
+		studentId
+		faculty
+		specialty
+		class
+		roles
+	}
+}

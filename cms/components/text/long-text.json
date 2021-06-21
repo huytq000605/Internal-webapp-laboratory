@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_text_long_texts",
+  "info": {
+    "name": "Long Text",
+    "icon": "audio-description",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  }
+}

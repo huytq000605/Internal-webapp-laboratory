@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "device_categories",
+  "info": {
+    "name": "Danh mục thiết bị"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 1
+    },
+    "devices": {
+      "via": "category",
+      "collection": "devices"
+    }
+  }
+}

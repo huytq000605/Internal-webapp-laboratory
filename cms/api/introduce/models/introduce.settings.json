@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "introduces",
+  "info": {
+    "name": "Introduce"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

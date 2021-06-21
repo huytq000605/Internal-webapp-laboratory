@@ -1,0 +1,8 @@
+mutation DeleteDevice($id: String!) {
+	deleteDevice(input: $id) {
+		name
+		model
+		category
+		createdAt
+	}
+}

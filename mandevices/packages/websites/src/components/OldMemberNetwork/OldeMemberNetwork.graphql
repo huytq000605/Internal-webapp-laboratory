@@ -1,0 +1,25 @@
+query OldMemberNetwork {
+    oldMemberNetwork {
+        companies {
+            id
+            logo {
+                url
+            }
+        }
+        countries {
+            id
+            flag {
+                url
+            }
+            name
+            universities {
+                id
+                name
+                shortName
+                students {
+                    id
+                }
+            }
+        }
+    }
+}

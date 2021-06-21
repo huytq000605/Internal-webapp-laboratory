@@ -1,0 +1,21 @@
+version: "3"
+services:
+  server:
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile-test
+  web_app:
+    build:
+      context: ./packages/webApp
+      dockerfile: Dockerfile-test
+    environment:
+      CI: "true"
+      NODE_ENV: test
+      REACT_APP_GOOGLE_CLIENT_ID: $REACT_APP_GOOGLE_CLIENT_ID
+  websites:
+    build:
+      context: ./packages/websites
+      dockerfile: Dockerfile-test
+    environment:
+      CI: "true"
+      NODE_ENV: test

@@ -1,0 +1,12 @@
+query NewsCastDetail($id: ID!) {
+    newscast(id: $id) {
+        id
+        title
+        content
+        thumbnail {
+            id
+            caption
+            url
+        }
+    }
+}

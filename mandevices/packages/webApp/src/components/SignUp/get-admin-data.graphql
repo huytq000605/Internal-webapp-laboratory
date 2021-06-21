@@ -1,0 +1,21 @@
+query GetAdmin {
+	getAdmin {
+		_id
+		createdAt
+		name
+		googleId
+	}
+}
+mutation CreateAdmin($input: UserCreateInput!) {
+	createAdmin(input: $input) {
+		_id
+		createdAt
+		name
+	}
+}
+
+query SystemCheck {
+	system {
+		hasOwnerAccount
+	}
+}
